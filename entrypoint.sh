@@ -25,6 +25,7 @@ cd "$GITHUB_WORKSPACE/$5"
 godot --headless --rendering-driver opengl3 --${mode} "$2" $GITHUB_WORKSPACE/build/${SubDirectoryLocation:-""}$1
 echo "Build Done"
 
+
 echo ::set-output name=build::build/${SubDirectoryLocation:-""}
 
 
