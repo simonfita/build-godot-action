@@ -22,6 +22,12 @@ fi
 echo "Building $1 for $2"
 mkdir -p $GITHUB_WORKSPACE/build/${SubDirectoryLocation:-""}
 cd "$GITHUB_WORKSPACE/$5"
+
+if [ -d "addons/epic-online-services-godot" ]; then
+    mkdir -p .godot
+    echo "res://addons/epic-online-services-godot/eosg.gdextension" > .godot/extension_list.cfg
+fi
+
 godot --headless --rendering-driver opengl3 --${mode} "$2" $GITHUB_WORKSPACE/build/${SubDirectoryLocation:-""}$1
 echo "Build Done"
 
