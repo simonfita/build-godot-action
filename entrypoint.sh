@@ -18,11 +18,14 @@ echo "Building $1 for $2"
 mkdir -p $GITHUB_WORKSPACE/build/
 cd "$GITHUB_WORKSPACE/$5"
 
-echo "Imported - no addon"
 if [ -d "addons/epic-online-services-godot" ]; then
     mkdir -p .godot
     echo "res://addons/epic-online-services-godot/eosg.gdextension" > .godot/extension_list.cfg
+    
+    mv "$GITHUB_WORKSPACE/addons/epic-online-services-godot/bin/windows/EOSSDK-Win64-Shipping.dll" "$GITHUB_WORKSPACE/build/"
+    mv "$GITHUB_WORKSPACE/addons/epic-online-services-godot/bin/windows/x64/xaudio2_9redist.dll" "$GITHUB_WORKSPACE/build/"
 fi
+
 godot --headless --${mode} "$2" "$GITHUB_WORKSPACE/build/$1"
 echo "Build Done"
 
