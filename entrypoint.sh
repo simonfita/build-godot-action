@@ -5,10 +5,6 @@ mkdir -v -p ~/.local/share/godot/export_templates
 cp -a /root/.local/share/godot/export_templates/. ~/.local/share/godot/export_templates/
 
 
-if [ "$3" != "" ]
-then
-    SubDirectoryLocation="$3/"
-fi
 
 mode="export-release"
 if [ "$6" = "true" ]
@@ -19,7 +15,7 @@ fi
 
 # Export for project
 echo "Building $1 for $2"
-mkdir -p $GITHUB_WORKSPACE/build/${SubDirectoryLocation:-""}
+mkdir -p $GITHUB_WORKSPACE/build/
 cd "$GITHUB_WORKSPACE/$5"
 
 echo "Imported - no addon"
@@ -27,7 +23,7 @@ if [ -d "addons/epic-online-services-godot" ]; then
     mkdir -p .godot
     echo "res://addons/epic-online-services-godot/eosg.gdextension" > .godot/extension_list.cfg
 fi
-godot --headless --${mode} "$2" $GITHUB_WORKSPACE/build/${SubDirectoryLocation:-""}$1 -v
+godot --headless --${mode} "$2" "$GITHUB_WORKSPACE/build/$1"
 echo "Build Done"
 
 
@@ -39,7 +35,7 @@ then
     echo "Packing Build"
     mkdir -p $GITHUB_WORKSPACE/package
     cd $GITHUB_WORKSPACE/build
-    zip $GITHUB_WORKSPACE/package/artifact.zip ${SubDirectoryLocation:-"."} -r
+    zip $GITHUB_WORKSPACE/package/artifact.zip "." -r
     echo ::set-output name=artifact::package/artifact.zip
     echo "Done"
 fi
