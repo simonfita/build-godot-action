@@ -26,6 +26,9 @@ if [ -d "addons/epic-online-services-godot" ]; then
     mv "$GITHUB_WORKSPACE/addons/epic-online-services-godot/bin/windows/x64/xaudio2_9redist.dll" "$GITHUB_WORKSPACE/build/"
 fi
 
+#import first
+godot --headless --import
+#second import and export
 godot --headless --${mode} "$2" "$GITHUB_WORKSPACE/build/$1"
 echo "Build Done"
 
