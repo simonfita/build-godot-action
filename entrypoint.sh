@@ -27,8 +27,9 @@ if [ -d "addons/epic-online-services-godot" ]; then
     mkdir -p .godot
     echo "res://addons/epic-online-services-godot/eosg.gdextension" > .godot/extension_list.cfg
 fi
-
-godot --${mode} "$2" $GITHUB_WORKSPACE/build/${SubDirectoryLocation:-""}$1
+godot --headless -rendering-driver opengl3 --import $GITHUB_WORKSPACE/build/${SubDirectoryLocation:-""}$1
+echo "Imported"
+godot --headless -rendering-driver opengl3 --${mode} "$2" $GITHUB_WORKSPACE/build/${SubDirectoryLocation:-""}$1
 echo "Build Done"
 
 
