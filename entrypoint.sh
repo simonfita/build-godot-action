@@ -22,7 +22,7 @@ fi
 echo "Building $1 for $2"
 mkdir -p $GITHUB_WORKSPACE/build/${SubDirectoryLocation:-""}
 cd "$GITHUB_WORKSPACE/$5"
-godot --headless -rendering-driver opengl3 --import $GITHUB_WORKSPACE/build/${SubDirectoryLocation:-""}$1
+godot --headless -rendering-driver opengl3 --import $GITHUB_WORKSPACE/build/${SubDirectoryLocation:-""}$1 -v
 echo "Imported - no addon"
 if [ -d "addons/epic-online-services-godot" ]; then
     mkdir -p .godot
