@@ -26,6 +26,11 @@ if [ -d "addons/epic-online-services-godot" ]; then
     mv "$GITHUB_WORKSPACE/addons/epic-online-services-godot/bin/windows/x64/xaudio2_9redist.dll" "$GITHUB_WORKSPACE/build/"
 fi
 
+
+if [ -f "docs/licences.txt" ]; then
+    mv "$GITHUB_WORKSPACE/docs/licences.txt" "$GITHUB_WORKSPACE/build/"
+fi
+
 #import first
 godot --headless --import
 #second import and export
