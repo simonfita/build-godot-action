@@ -19,6 +19,8 @@ mkdir -p $GITHUB_WORKSPACE/build/
 cd "$GITHUB_WORKSPACE/$5"
 
 if [ -d "addons/epic-online-services-godot" ]; then
+
+    echo "Copying Godot EOS"
     mkdir -p .godot
     echo "res://addons/epic-online-services-godot/eosg.gdextension" > .godot/extension_list.cfg
     
