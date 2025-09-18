@@ -28,6 +28,7 @@ fi
 
 
 if [ -f "docs/licences.txt" ]; then
+    echo "Copying licences.txt"
     mv "$GITHUB_WORKSPACE/docs/licences.txt" "$GITHUB_WORKSPACE/build/"
 fi
 
