@@ -29,9 +29,9 @@ if [ -d "addons/epic-online-services-godot" ]; then
 fi
 
 
-if [ -f "docs/licences.txt" ]; then
-    echo "Copying licences.txt"
-    mv "$GITHUB_WORKSPACE/docs/licences.txt" "$GITHUB_WORKSPACE/build/"
+if [ -f "docs/licenses.txt" ]; then
+    echo "Copying licenses.txt"
+    mv "$GITHUB_WORKSPACE/docs/licenses.txt" "$GITHUB_WORKSPACE/build/"
 fi
 
 #import first
