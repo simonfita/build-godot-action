@@ -18,16 +18,23 @@ echo "Building $1 for $2"
 mkdir -p $GITHUB_WORKSPACE/build/
 cd "$GITHUB_WORKSPACE/$5"
 
+ mkdir -p .godot
+
 if [ -d "addons/epic-online-services-godot" ]; then
 
     echo "Copying Godot EOS"
-    mkdir -p .godot
     echo "res://addons/epic-online-services-godot/eosg.gdextension" > .godot/extension_list.cfg
     
     mv "$GITHUB_WORKSPACE/addons/epic-online-services-godot/bin/windows/EOSSDK-Win64-Shipping.dll" "$GITHUB_WORKSPACE/build/"
     mv "$GITHUB_WORKSPACE/addons/epic-online-services-godot/bin/windows/x64/xaudio2_9redist.dll" "$GITHUB_WORKSPACE/build/"
 fi
 
+
+if [ -d "addons/PathMesh3D" ]; then
+
+    echo "Copying PathMesh3D"   
+    mv "$GITHUB_WORKSPACE/addons/PathMesh3D/bin/path_mesh_3d.windows.template_debug.x86_64.dll" "$GITHUB_WORKSPACE/build/"
+fi
 
 if [ -f "docs/licenses.txt" ]; then
     echo "Copying licenses.txt"
